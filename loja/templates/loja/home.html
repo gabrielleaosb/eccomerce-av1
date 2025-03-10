@@ -20,7 +20,7 @@
                         <i class="fa-solid fa-shopping-cart"></i>
                     </div>
                     <div class="cart-quantity">
-                        <span>3</span> 
+                        <span>0</span> 
                     </div>
                 </div>
                 <div class="login">
@@ -31,19 +31,85 @@
             </div>
         </div>
     </header>
-    <section class="product-list">
-        <h2 class="catalog-title">Catálogo</h2>
-        <div class="products">
-            {% for produto in produtos %}
-            <div class="product">
-                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
-                <div class="product-info">
-                    <h3>{{ produto.nome }}</h3>
-                    <p>R$ {{ produto.preco }}</p>
-                </div>
-            </div>
-            {% endfor %}
+    <h2 class="catalog-title">Catálogo</h2>
+    <section class="search-container">
+        <div class="search-form">
+            <input type="text" placeholder="Buscar jogo ou palavra-chave" class="search-input">
+            <button class="search-button">
+                <i class="fa-solid fa-search"></i>
+            </button>
         </div>
     </section>
+
+    <div class="content-container">
+        <div class="result-container">
+            <span class="result-count">{{ produtos|length }} resultados</span>
+            <div class="sort-by">
+                <label for="sort-select">Listar por:</label>
+                <select id="sort-select" class="sort-select">
+                    <option value="populares">Mais Procurados</option>
+                    <option value="alfabetica">Ordem Alfabética</option>
+                    <option value="data_lancamento">Data de Lançamento</option>
+                    <option value="menor_preco">Menor Preço</option>
+                    <option value="maior_preco">Maior Preço</option>
+                </select>
+            </div>
+        </div>
+        <div class="filters">
+            <div class="filter-row">
+                <div class="filter">
+                    <label for="platform">Plataforma:</label>
+                    <select id="platform" class="filter-select">
+                        <option value="todos">Todos</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="system">Sistema:</label>
+                    <select id="system" class="filter-select">
+                        <option value="todos">Todos</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="type">Tipo:</label>
+                    <select id="type" class="filter-select">
+                        <option value="todos">Todos</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="category">Categoria:</label>
+                    <select id="category" class="filter-select">
+                        <option value="todos">Todos</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="distributor">Distribuidor:</label>
+                    <select id="distributor" class="filter-select">
+                        <option value="todos">Todos</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="price">Preço:</label>
+                    <select id="price" class="filter-select">
+                        <option value="todos">Todos</option>
+                        <option value="baixo">Menor Preço</option>
+                        <option value="alto">Maior Preço</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <section class="product-list">
+            <div class="products">
+                {% for produto in produtos %}
+                <div class="product">
+                    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                    <div class="product-info">
+                        <h3>{{ produto.nome }}</h3>
+                        <p>R$ {{ produto.preco }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
 </body>
 </html>
