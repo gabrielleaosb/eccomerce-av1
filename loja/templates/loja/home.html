@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>naoveem</title>
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'loja/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="{% static 'loja/images/naoveem.png' %}" alt="naoveem">
+            </div>
+            <div class="login-cart-container">
+                <div class="cart">
+                    <div class="cart-icon">
+                        <i class="fa-solid fa-shopping-cart"></i>
+                    </div>
+                    <div class="cart-quantity">
+                        <span>3</span> 
+                    </div>
+                </div>
+                <div class="login">
+                    <button class="login-button">
+                        <i class="fa-solid fa-user"></i> Entrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="product-list">
+        <h2 class="catalog-title">Catálogo</h2>
+        <div class="products">
+            {% for produto in produtos %}
+            <div class="product">
+                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                <div class="product-info">
+                    <h3>{{ produto.nome }}</h3>
+                    <p>R$ {{ produto.preco }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
