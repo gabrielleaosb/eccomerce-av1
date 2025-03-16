@@ -56,47 +56,54 @@
             </div>
         </div>
         <div class="filters">
-            <div class="filter-row">
-                <div class="filter">
-                    <label for="platform">Plataforma:</label>
-                    <select id="platform" class="filter-select">
-                        <option value="todos">Todos</option>
-                    </select>
-                </div>
-                <div class="filter">
-                    <label for="system">Sistema:</label>
-                    <select id="system" class="filter-select">
-                        <option value="todos">Todos</option>
-                    </select>
-                </div>
-                <div class="filter">
-                    <label for="type">Tipo:</label>
-                    <select id="type" class="filter-select">
-                        <option value="todos">Todos</option>
-                    </select>
-                </div>
-                <div class="filter">
-                    <label for="category">Categoria:</label>
-                    <select id="category" class="filter-select">
-                        <option value="todos">Todos</option>
-                    </select>
-                </div>
-                <div class="filter">
-                    <label for="distributor">Distribuidor:</label>
-                    <select id="distributor" class="filter-select">
-                        <option value="todos">Todos</option>
-                    </select>
-                </div>
-                <div class="filter">
-                    <label for="price">Preço:</label>
-                    <select id="price" class="filter-select">
-                        <option value="todos">Todos</option>
-                        <option value="baixo">Menor Preço</option>
-                        <option value="alto">Maior Preço</option>
-                    </select>
-                </div>
+            <div class="filter">
+                <select id="platform" class="filter-select">
+                    <option value="" disabled selected>Plataforma</option>
+                    {% for plataforma in plataformas %}
+                        <option value="{{ plataforma.id }}">{{ plataforma.nome }}</option>
+                    {% endfor %}
+                </select>
             </div>
-        </div>
+            <div class="filter">
+                <select id="system">
+                    <option value="" disabled selected>Sistema</option>
+                    {% for sistema in sistemas %}
+                        <option value="{{ sistema.id }}">{{ sistema.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter">
+                <select id="type">
+                    <option value="" disabled selected>Tipo</option>
+                    {% for tipo in tipos %}
+                        <option value="{{ tipo.id }}">{{ tipo.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter">
+                <select id="category">
+                    <option value="" disabled selected>Categoria</option>
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter">
+                <select id="distributor">
+                    <option value="" disabled selected>Distribuidor</option>
+                    {% for distribuidor in distribuidores %}
+                        <option value="{{ distribuidor.id }}">{{ distribuidor.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>   
+            <div class="filter">
+                <select id="price">
+                    <option value="todos">Preço</option>
+                    <option value="baixo">Menor Preço</option>
+                    <option value="alto">Maior Preço</option>
+                </select>
+            </div>
+        </div>            
         <section class="product-list">
             <div class="products">
                 {% for produto in produtos %}

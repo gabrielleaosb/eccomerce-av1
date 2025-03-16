@@ -1,10 +1,17 @@
 from django.shortcuts import render
-from .models import Produto, Categoria
+from .models import Produto, Categoria, Plataforma, Sistema, Tipo, Distribuidor
+
 
 def home(request):
-    produtos = Produto.objects.all()
-    categorias = Categoria.objects.all()
-    return render(request, 'loja/home.html', {'produtos': produtos, 'categorias': categorias})
+    context = {
+        'plataformas': Plataforma.objects.all(),
+        'sistemas': Sistema.objects.all(),
+        'tipos': Tipo.objects.all(),
+        'categorias': Categoria.objects.all(),
+        'distribuidores': Distribuidor.objects.all()
+    }
+    return render(request, 'loja/home.html', context)
+
 
 def lista_produtos(request):
     produtos = Produto.objects.all()

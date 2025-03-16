@@ -284,3 +284,23 @@ header {
     cursor: pointer;
     font-size: 14px;
 }
+
+.filters {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px; 
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1); 
+}
+
+.filter::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+
